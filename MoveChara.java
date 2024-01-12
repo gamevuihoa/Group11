@@ -49,7 +49,7 @@ public class MoveChara {
         setCharaDirection(TYPE_RIGHT); // start with right-direction
     }
 
-    // set the cat's direction
+    // set the man's direction
     public void setCharaDirection(int cd) {
         charaDirection = cd;
         for (int i = 0; i < 4; i++) {
@@ -61,7 +61,7 @@ public class MoveChara {
         }
     }
 
-    // check whether the cat can move on
+    // check whether the man can move on
     private boolean isMovable(int dx, int dy) {
         if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_WALL) {
             return false;
@@ -71,7 +71,7 @@ public class MoveChara {
         return false;
     }
 
-    // move the cat
+    // move the man
     public boolean move(int dx, int dy) {
         if (isMovable(dx, dy)) {
             posX += dx;
@@ -83,22 +83,22 @@ public class MoveChara {
         }
     }
 
-    // getter: direction of the cat
+    // getter: direction of the man
     public ImageView getCharaImageView() {
         return charaImageViews[charaDirection];
     }
 
-    // getter: x-positon of the cat
+    // getter: x-positon of the man
     public int getPosX() {
         return posX;
     }
 
-    // getter: y-positon of the cat
+    // getter: y-positon of the man
     public int getPosY() {
         return posY;
     }
 
-    // Show the cat animation
+    // Show the man animation
     private class ImageAnimation extends AnimationTimer {
 
         private ImageView charaView = null;
