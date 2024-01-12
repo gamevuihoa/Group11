@@ -77,6 +77,9 @@ public class MoveChara {
             posX += dx;
             posY += dy;
 	    System.out.println("chara[X,Y]:" + posX + "," + posY);
+	    if(posX == 18&&posY == 13||posX==19&&posY==12){
+                System.out.println("Game Clear!");
+            }
             return true;
         } else {
             return false;
