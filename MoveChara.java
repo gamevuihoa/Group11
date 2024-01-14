@@ -68,7 +68,7 @@ public class MoveChara {
         } else if (mapData.getMap(posX + dx, posY + dy) == MapData.TYPE_SPACE) {
             return true;
         }
-        return false;
+        return true;
     }
 
     // move the man
@@ -77,7 +77,10 @@ public class MoveChara {
             posX += dx;
             posY += dy;
 	    System.out.println("chara[X,Y]:" + posX + "," + posY);
-	    if(posX == 18&&posY == 13||posX==19&&posY==12){
+		if (hasItem(posX,posY)) {
+                mapData.setMap(posX, posY, MapData.TYPE_SPACE);
+                mapData.updateImageView(posX, posY);
+                } else if(posX == 18&&posY == 13||posX==19&&posY==12){
                 System.out.println("Game Clear!");
             }
             return true;
@@ -85,6 +88,14 @@ public class MoveChara {
             return false;
         }
     }
+	// check the place if there is a pickable item
+public boolean hasItem (int x, int y){
+    if (mapData.getMap(x,y) == MapData.TYPE_TIME) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
     // getter: direction of the man
     public ImageView getCharaImageView() {
