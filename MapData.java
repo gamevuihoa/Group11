@@ -21,10 +21,9 @@ public class MapData {
     private int times;
 
     MapData(int x, int y) {
-        mapImages = new Image[2];
-        mapImages=new Image[3];
+        mapImages=new Image[4];
         mapImageViews = new ImageView[y][x];
-        for (int i = 0; i < 2; i ++) {
+        for (int i = 0; i < 4; i ++) {
             mapImages[i] = new Image(mapImageFiles[i]);
         }
 
@@ -34,7 +33,8 @@ public class MapData {
 
         fillMap(MapData.TYPE_WALL);
         digMap(1, 3);
-        set Map(19,13,MapData.TYPE_OTHER_FLAG);
+        setMap(19,13,MapData.TYPE_OTHER_FLAG);
+        setMultipleItems(MapData.TYPE_TIME,times);
         setImageViews();
     }
 
@@ -47,6 +47,26 @@ public class MapData {
         }
     }
 
+    public void updateImageView(int x, int y) {
+    mapImageViews[y][x].setImage(mapImages[maps[y][x]]);
+  }
+
+  //アイテム1個をマップにランダムに配置する
+  public void setItem(int type) {
+    int x, y;
+    x = (int) (Math.random() * width);
+    y = (int) (Math.random() * height);
+    if (getMap(x, y) != MapData.TYPE_SPACE) {
+      setItem(type);
+    } else if (getMap(x, y) == MapData.TYPE_SPACE) {
+      setMap(x, y, type);
+    }
+  }
+    public void setMultipleItems(int type, int n) {
+    for (int i = 0; i < n; i++) {
+      setItem(type);
+    }
+  }
     // dig walls for making roads
     private void digMap(int x, int y) {
         setMap(x, y, MapData.TYPE_SPACE);
