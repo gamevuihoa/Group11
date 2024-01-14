@@ -20,7 +20,7 @@ public class MapData {
     private int height; // height of the map
     private int times;
 
-    MapData(int x, int y) {
+    MapData(int x, int y,int times) {
         mapImages=new Image[4];
         mapImageViews = new ImageView[y][x];
         for (int i = 0; i < 4; i ++) {
