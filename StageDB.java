@@ -19,8 +19,8 @@ class StageDB {
     static private MediaPlayer mainSound = null;
     static private MediaPlayer gameOverSound = null;
     static private Class mainClass;
-    static private final String mainSoundFileName = "src/sound/Nigiwau_machi.mp3"; 
-    static private final String gameoverSoundFileName = "src/sound/gameover.wav";
+    static private final String mainSoundFileName = "sound/Nigiwau_machi.mp3"; 
+    static private final String gameoverSoundFileName = "sound/gameover.wav";
 
     public static void setMainClass(Class mainClass) {
         StageDB.mainClass = mainClass;
