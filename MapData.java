@@ -4,12 +4,13 @@ import javafx.scene.image.ImageView;
 public class MapData {
     public static final int TYPE_SPACE = 0;
     public static final int TYPE_WALL = 1;
-    //public static final int TYPE_OTHERS = 2;
     public static final int TYPE_OTHER_FLAG=2;
+    public static final int TYPE_TIME = 3;
     private static final String mapImageFiles[] = {
             "png/SPACE.png",
             "png/WALL.png",
-            "png/other_flag_01.png"
+            "png/other_flag_01.png",
+            "png/time.png"
     };
 
     private Image[] mapImages;
@@ -17,6 +18,7 @@ public class MapData {
     private int[][] maps;
     private int width; // width of the map
     private int height; // height of the map
+    private int times;
 
     MapData(int x, int y) {
         mapImages = new Image[2];
