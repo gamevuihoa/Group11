@@ -21,7 +21,7 @@ public class MapGameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        mapData = new MapData(21, 15,3);
+        mapData = new MapData(21, 15,3,3);
         chara = new MoveChara(1, 1, mapData);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
         for (int y = 0; y < mapData.getHeight(); y ++) {
@@ -64,6 +64,8 @@ public class MapGameController implements Initializable {
             rightButtonAction();
         }
     }
+
+
 
     // Operations for going the cat up
     public void upButtonAction() {
@@ -112,7 +114,7 @@ public class MapGameController implements Initializable {
 
     @FXML
     public void func2ButtonAction(ActionEvent event) {
-        mapData = new MapData(21, 15,3);
+        mapData = new MapData(21, 15,3,3);
         chara = new MoveChara(1, 1, mapData);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
         for (int y = 0; y < mapData.getHeight(); y ++) {
