@@ -84,8 +84,10 @@ public class MoveChara {
                     mapData.updateImageView(posX, posY);
                 }else if(itemType == MapData.TYPE_FLOOR){
                     //ランダムに方向キーを変えるメソッドをここで呼び出す
+                    mapData.setMap(posX,posY,MapData.TYPE_SPACE);
+                    mapData.updateImageView(posX,posY);
                 }
-                mapData.setMap(posX,posY,MapData.TYPE_SPACE);
+                
                 } else if(posX == 18&&posY == 13||posX==19&&posY==12){
                 System.out.println("Game Clear!");
         }
@@ -96,7 +98,7 @@ public class MoveChara {
     }
 	// check the place if there is a pickable item
 public boolean hasItem (int x, int y){
-    if (mapData.getMap(x,y) == MapData.TYPE_TIME) {
+    if (mapData.getMap(x,y) >= MapData.TYPE_TIME&& mapData.getMap(x,y) <= MapData.TYPE_FLOOR) {
         return true;
     } else {
         return false;
