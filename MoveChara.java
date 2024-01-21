@@ -78,11 +78,17 @@ public class MoveChara {
             posY += dy;
 	    System.out.println("chara[X,Y]:" + posX + "," + posY);
 		if (hasItem(posX,posY)) {
-                mapData.setMap(posX, posY, MapData.TYPE_SPACE);
-                mapData.updateImageView(posX, posY);
+            int itemType = mapData.getMap(posX,posY);
+                if(itemType == MapData.TYPE_TIME){
+                    mapData.setMap(posX, posY, MapData.TYPE_SPACE);
+                    mapData.updateImageView(posX, posY);
+                }else if(itemType == MapData.TYPE_FLOOR){
+                    //ランダムに方向キーを変えるメソッドをここで呼び出す
+                }
+                mapData.setMap(posX,posY,MapData.TYPE_SPACE);
                 } else if(posX == 18&&posY == 13||posX==19&&posY==12){
                 System.out.println("Game Clear!");
-            }
+        }
             return true;
         } else {
             return false;
