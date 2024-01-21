@@ -6,11 +6,13 @@ public class MapData {
     public static final int TYPE_WALL = 1;
     public static final int TYPE_OTHER_FLAG=2;
     public static final int TYPE_TIME = 3;
+    public static final int TYPE_FLOOR =4;
     private static final String mapImageFiles[] = {
             "png/SPACE.png",
             "png/WALL.png",
             "png/other_flag_01.png",
-            "png/time.png"
+            "png/time.png",
+            "png/rotating_floor.png"
     };
 
     private Image[] mapImages;
@@ -20,10 +22,10 @@ public class MapData {
     private int height; // height of the map
     private int times;
 
-    MapData(int x, int y,int times) {
-        mapImages=new Image[4];
+    MapData(int x, int y,int times, int floor) {
+        mapImages=new Image[5];
         mapImageViews = new ImageView[y][x];
-        for (int i = 0; i < 4; i ++) {
+        for (int i = 0; i < 5; i ++) {
             mapImages[i] = new Image(mapImageFiles[i]);
         }
 
@@ -35,6 +37,7 @@ public class MapData {
         digMap(1, 3);
         setMap(19,13,MapData.TYPE_OTHER_FLAG);
         setMultipleItems(MapData.TYPE_TIME,times);
+        setMultipleItems(MapData.TYPE_FLOOR,floor);
         setImageViews();
     }
 
@@ -46,7 +49,8 @@ public class MapData {
             }
         }
     }
-
+    
+    //アイテム取得後のマップの画像を再読込
     public void updateImageView(int x, int y) {
     mapImageViews[y][x].setImage(mapImages[maps[y][x]]);
   }
