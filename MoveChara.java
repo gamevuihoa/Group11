@@ -2,6 +2,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.animation.AnimationTimer;
+import java.util.Arrays;
+import java.util.Random;
 
 public class MoveChara {
     public static final int TYPE_DOWN = 0;
@@ -13,6 +15,8 @@ public class MoveChara {
     private final String[] animationNumbers = { "1", "2", "3" };
     private final String pngPathPre = "png/Chara_";
     private final String pngPathSuf = ".png";
+
+    public int[] selectedNumbers;
 
     private int posX;
     private int posY;
@@ -47,7 +51,7 @@ public class MoveChara {
         posY = startY;
 
         setCharaDirection(TYPE_RIGHT); // start with right-direction
-    }
+    }  
 
     // set the man's direction
     public void setCharaDirection(int cd) {
@@ -80,24 +84,32 @@ public class MoveChara {
 		if (hasItem(posX,posY)) {
             int itemType = mapData.getMap(posX,posY);
                 if(itemType == MapData.TYPE_TIME){
-			//表示されている時間を増やすプログラムをここに書く
+                    //表示されている時間を増やすプログラムをここに書く
                     mapData.setMap(posX, posY, MapData.TYPE_SPACE);
                     mapData.updateImageView(posX, posY);
                 }else if(itemType == MapData.TYPE_FLOOR){
-                    //ランダムに方向キーを変えるメソッドをここで呼び出す
-                }
-                
+                    //方向キーを変えるために配列の要素をシャッフルする
+                    int[] numbers = {1, 2, 3, 4};
+                    shuffleArray(numbers);
+                    selectedNumbers = Arrays.copyOfRange(numbers, 0, 4);
                 } else if(posX == 18&&posY == 13||posX==19&&posY==12){
                 System.out.println("Game Clear!");
+                }
         }
             return true;
         } else {
             return false;
         }
     }
+
+    public int[] getSelectedNumbers() {
+        return selectedNumbers;
+    }
+
+
 	// check the place if there is a pickable item
 public boolean hasItem (int x, int y){
-    if (mapData.getMap(x,y) >= MapData.TYPE_TIME&& mapData.getMap(x,y) <= MapData.TYPE_FLOOR) {
+    if (mapData.getMap(x,y) >= MapData.TYPE_TIME && mapData.getMap(x,y) <= MapData.TYPE_FLOOR) {
         return true;
     } else {
         return false;
@@ -159,6 +171,17 @@ public boolean hasItem (int x, int y){
                 }
                 charaView.setImage(charaImages[index]);
             }
+        }
+    }
+
+    private static void shuffleArray(int[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            // 要素を入れ替える
+            int temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
         }
     }
 }

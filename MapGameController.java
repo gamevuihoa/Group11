@@ -52,16 +52,58 @@ public class MapGameController implements Initializable {
 
     // Get users' key actions
     public void keyAction(KeyEvent event) {
+        int[] keySelectNumbers = {1, 2, 3, 4};
+        int[] exceptionNumbers = {0, 0, 0, 0};
+        int[] selectNumbers = chara.getSelectedNumbers();
+        if (selectNumbers != null && selectNumbers != exceptionNumbers) {
+            keySelectNumbers = selectNumbers;
+        }
+        int A = keySelectNumbers[0];
+        int W = keySelectNumbers[1];
+        int S = keySelectNumbers[2];
+        int D = keySelectNumbers[3];
         KeyCode key = event.getCode();
         System.out.println("keycode:" + key);
         if (key == KeyCode.A) {
-            leftButtonAction();
-        } else if (key == KeyCode.S) {
-            downButtonAction();
+            if (A == 1) {
+                leftButtonAction();
+            } else if (A == 2) {
+                upButtonAction();
+            } else if (A == 3) {
+                downButtonAction();
+            } else if (A == 4) {
+                rightButtonAction();
+            }
         } else if (key == KeyCode.W) {
-            upButtonAction();
+            if (W == 1) {
+                leftButtonAction();
+            } else if (W == 2) {
+                upButtonAction();
+            } else if (W == 3) {
+                downButtonAction();
+            } else if (W == 4) {
+                rightButtonAction();
+            }
+        } else if (key == KeyCode.S) {
+            if (S == 1) {
+                leftButtonAction();
+            } else if (S == 2) {
+                upButtonAction();
+            } else if (S == 3) {
+                downButtonAction();
+            } else if (S == 4) {
+                rightButtonAction();
+            }
         } else if (key == KeyCode.D) {
-            rightButtonAction();
+            if (D == 1) {
+                leftButtonAction();
+            } else if (D == 2) {
+                upButtonAction();
+            } else if (D == 3) {
+                downButtonAction();
+            } else if (D == 4) {
+                rightButtonAction();
+            }
         }
     }
 
