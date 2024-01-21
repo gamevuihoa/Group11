@@ -80,12 +80,11 @@ public class MoveChara {
 		if (hasItem(posX,posY)) {
             int itemType = mapData.getMap(posX,posY);
                 if(itemType == MapData.TYPE_TIME){
+			//表示されている時間を増やすプログラムをここに書く
                     mapData.setMap(posX, posY, MapData.TYPE_SPACE);
                     mapData.updateImageView(posX, posY);
                 }else if(itemType == MapData.TYPE_FLOOR){
                     //ランダムに方向キーを変えるメソッドをここで呼び出す
-                    mapData.setMap(posX,posY,MapData.TYPE_SPACE);
-                    mapData.updateImageView(posX,posY);
                 }
                 
                 } else if(posX == 18&&posY == 13||posX==19&&posY==12){
