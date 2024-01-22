@@ -28,6 +28,7 @@ public class MoveChara {
     private ImageAnimation[] charaImageAnimations;
 
     private int charaDirection;
+    private int score;	
 
     MoveChara(int startX, int startY, MapData mapData) {
         this.mapData = mapData;
@@ -85,6 +86,7 @@ public class MoveChara {
             int itemType = mapData.getMap(posX,posY);
                 if(itemType == MapData.TYPE_TIME){
                     //表示されている時間を増やすプログラムをここに書く
+		    score += 100;
                     mapData.setMap(posX, posY, MapData.TYPE_SPACE);
                     mapData.updateImageView(posX, posY);
                 }else if(itemType == MapData.TYPE_FLOOR){
@@ -92,7 +94,7 @@ public class MoveChara {
                     int[] numbers = {1, 2, 3, 4};
                     shuffleArray(numbers);
                     selectedNumbers = Arrays.copyOfRange(numbers, 0, 4);
-                } else if(posX == 18&&posY == 13||posX==19&&posY==12){
+                } else if(mapData.getMap(posX, posY) == MapData.TYPE_OTHER_FLAG){
                 System.out.println("Game Clear!");
                 }
         }
@@ -130,6 +132,14 @@ public boolean hasItem (int x, int y){
     public int getPosY() {
         return posY;
     }
+
+    public int getScore(){
+        return score;
+    }
+
+    public int setScore(int score){
+        return this.score = score;
+    }	
 
     // Show the man animation
     private class ImageAnimation extends AnimationTimer {
