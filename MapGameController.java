@@ -199,7 +199,21 @@ public class MapGameController implements Initializable {
         chara.move(1, 0);
         drawMap(chara, mapData);
     }
-
+    
+    public void openGoalAction () {
+        if (mapData.getMap(chara.getPosX(),chara.getPosY()) == MapData.TYPE_OTHER_FLAG) {
+                printAction("OPEN");
+                StageDB.getMainSound().stop();
+                timeline.stop();
+                mapData.setMap(chara.getPosX(),chara.getPosY(),MapData.TYPE_OTHER_FLAG);
+                drawMap(chara, mapData);
+                if (GoalWindow.onOpen()) { 
+                    newgame();
+                }
+            
+        }
+    }
+    
     @FXML
     public void func1ButtonAction(ActionEvent event) {
         try {
