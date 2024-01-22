@@ -12,12 +12,19 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXML;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 public class MapGameController implements Initializable {
     public MapData mapData;
     public MoveChara chara;
     public GridPane mapGrid;
     public ImageView[] mapImageViews;
+    Timeline timeline;
+    private Integer timeSeconds = 60; 
+    public Label scoreLabel;
+    public Label timeleftLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -31,7 +38,57 @@ public class MapGameController implements Initializable {
             }
         }
         drawMap(chara, mapData);
+        setupTimeline();
     }
+    
+        private void setupTimeline() {
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            KeyFrame frame = new KeyFrame(Duration.seconds(1), event -> {
+                timeSeconds--;
+                updateTimeleftLabel();
+                if (timeSeconds <= 0) {
+                    timeline.stop();
+                    gameOver();
+                }
+            });
+            timeline.getKeyFrames().add(frame);
+            timeline.playFromStart();
+        }
+    
+    public void newgame() {
+        mapData = new MapData(21, 15, 3, 3);
+        chara = new MoveChara(1, 1, mapData);
+        mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
+        for (int y = 0; y < mapData.getHeight(); y ++) {
+            for (int x = 0; x < mapData.getWidth(); x ++) {
+                int index = y * mapData.getWidth() + x;
+                mapImageViews[index] = mapData.getImageView(x, y);
+            }
+        }
+        drawMap(chara, mapData);
+        if (timeline != null) {
+            timeline.stop(); 
+        }
+        timeSeconds = 60; 
+        timeline.playFromStart(); 
+        StageDB.getMainSound().stop();
+        StageDB.getMainSound().play();
+        updateTimeleftLabel();
+    }
+
+    
+    private void gameOver() {
+        StageDB.getMainStage().hide();
+        StageDB.getMainSound().stop();
+        StageDB.getGameOverStage().show();
+        StageDB.getGameOverSound().play();
+    }   
+    
+    public void updateTimeleftLabel() {
+        String timeString = String.valueOf(timeSeconds);
+        timeleftLabel.setText("Time Left: " + timeString);
+    }    
 
     // Draw the map
     public void drawMap(MoveChara c, MapData m) {
@@ -104,7 +161,9 @@ public class MapGameController implements Initializable {
             } else if (D == 4) {
                 rightButtonAction();
             }
-        }
+        } else if (key == KeyCode.O) {
+            openGoalAction();
+        }    
     }
 
 
@@ -166,6 +225,14 @@ public class MapGameController implements Initializable {
             }
         }
         drawMap(chara, mapData);
+        if (timeline != null) {
+            timeline.stop(); 
+        }
+        timeSeconds = 60; 
+        timeline.playFromStart(); 
+        StageDB.getMainSound().stop();
+        StageDB.getMainSound().play();
+        updateTimeleftLabel();        
     }
 
     @FXML
