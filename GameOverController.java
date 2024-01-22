@@ -18,4 +18,13 @@ public class GameOverController {
 			System.out.println(ex.getMessage());
 		}
 	}
+
+	@FXML
+	void exit(ActionEvent event) {
+		try {
+			System.exit(0);
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}	
 }
