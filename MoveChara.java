@@ -97,7 +97,7 @@ public class MoveChara {
                     int[] numbers = {1, 2, 3, 4};
                     shuffleArray(numbers);
                     selectedNumbers = Arrays.copyOfRange(numbers, 0, 4);
-                } else if(mapData.getMap(posX, posY) == MapData.TYPE_OTHER_FLAG){
+                } else if(itemType == MapData.TYPE_OTHER_FLAG){
                     gameController.openGoalAction();
                 System.out.println("Game Clear!");
                 }
@@ -118,7 +118,7 @@ public class MoveChara {
 
 	// check the place if there is a pickable item
 public boolean hasItem (int x, int y){
-    if (mapData.getMap(x,y) >= MapData.TYPE_TIME && mapData.getMap(x,y) <= MapData.TYPE_FLOOR) {
+    if (mapData.getMap(x,y) >= MapData.TYPE_OTHER_FLAG && mapData.getMap(x,y) <= MapData.TYPE_FLOOR) {
         return true;
     } else {
         return false;
