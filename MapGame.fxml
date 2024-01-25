@@ -28,7 +28,7 @@
       <children>
         <Label fx:id="timeleftLabel" alignment="CENTER" prefHeight="23.0" prefWidth="125.0" text="Time Left: 10" textAlignment="CENTER" />
             <Label fx:id="scoreLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="23.0" prefWidth="120.0" text="Score: 0" textAlignment="CENTER" />
-            <Label fx:id="instruction" alignment="BOTTOM_RIGHT" layoutX="112.0" layoutY="10.0" prefHeight="23.0" prefWidth="270.0" text="Press O to clear game when you reach the flag" textAlignment="CENTER">
+            <Label fx:id="instruction" alignment="BOTTOM_RIGHT" layoutX="112.0" layoutY="10.0" prefHeight="23.0" prefWidth="270.0" text="　" textAlignment="CENTER">
                <font>
                   <Font size="10.0" />
                </font>
