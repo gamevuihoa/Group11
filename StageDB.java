@@ -21,6 +21,7 @@ class StageDB {
     static private Class mainClass;
     static private final String mainSoundFileName = "sound/Nigiwau_machi.mp3"; 
     static private final String gameoverSoundFileName = "sound/gameover.wav";
+    static private final String gameclearSoundFileName = "sound/gameover.wav";
 
     public static void setMainClass(Class mainClass) {
         StageDB.mainClass = mainClass;
@@ -47,6 +48,22 @@ class StageDB {
             try {
                 // please write down the code for playing gameover sound
                 Media m = new Media(new File(gameoverSoundFileName).toURI().toString());
+                MediaPlayer mp = new MediaPlayer(m);
+                mp.setCycleCount(1); //play only once
+                mp.setRate(1.0); // Normal speed
+                mp.setVolume(0.5); // Set volume level
+                gameOverSound = mp;
+            } catch (Exception io) {
+                System.err.print(io.getMessage());
+            }
+        }
+        return gameOverSound;
+    }
+
+    public static MediaPlayer getGameClearSound() {
+        if (gameOverSound == null) {
+            try {
+                Media m = new Media(new File(gameclearSoundFileName).toURI().toString());
                 MediaPlayer mp = new MediaPlayer(m);
                 mp.setCycleCount(1); //play only once
                 mp.setRate(1.0); // Normal speed
