@@ -18,6 +18,7 @@ class StageDB {
     static private Stage gameOverStage = null;
     static private MediaPlayer mainSound = null;
     static private MediaPlayer gameOverSound = null;
+    static private MediaPlayer gameClearSound = null;
     static private Class mainClass;
     static private final String mainSoundFileName = "sound/Nigiwau_machi.mp3"; 
     static private final String gameoverSoundFileName = "sound/gameover.wav";
@@ -61,19 +62,19 @@ class StageDB {
     }
 
     public static MediaPlayer getGameClearSound() {
-        if (gameOverSound == null) {
+        if (gameClearSound == null) {
             try {
                 Media m = new Media(new File(gameclearSoundFileName).toURI().toString());
                 MediaPlayer mp = new MediaPlayer(m);
                 mp.setCycleCount(1); //play only once
                 mp.setRate(1.0); // Normal speed
                 mp.setVolume(0.5); // Set volume level
-                gameOverSound = mp;
+                gameClearSound = mp;
             } catch (Exception io) {
                 System.err.print(io.getMessage());
             }
         }
-        return gameOverSound;
+        return gameClearSound;
     }
 
     public static Stage getMainStage() {
