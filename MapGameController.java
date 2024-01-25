@@ -29,7 +29,7 @@ public class MapGameController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         mapData = new MapData(21, 15,3,3);
-        chara = new MoveChara(1, 1, mapData);
+        chara = new MoveChara(1, 1, mapData,this);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
         for (int y = 0; y < mapData.getHeight(); y ++) {
             for (int x = 0; x < mapData.getWidth(); x ++) {
@@ -55,10 +55,15 @@ public class MapGameController implements Initializable {
             timeline.getKeyFrames().add(frame);
             timeline.playFromStart();
         }
+        public void increaseTimeSeconds(int secondsToAdd) {
+            this.timeSeconds += secondsToAdd;
+            updateTimeleftLabel();
+        }
+
     
     public void newgame() {
         mapData = new MapData(21, 15, 3, 3);
-        chara = new MoveChara(1, 1, mapData);
+        chara = new MoveChara(1, 1, mapData,this);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
         for (int y = 0; y < mapData.getHeight(); y ++) {
             for (int x = 0; x < mapData.getWidth(); x ++) {
@@ -85,7 +90,7 @@ public class MapGameController implements Initializable {
         StageDB.getGameOverSound().play();
     }   
     
-    public void updateTimeleftLabel() {
+    private void updateTimeleftLabel() {
         String timeString = String.valueOf(timeSeconds);
         timeleftLabel.setText("Time Left: " + timeString);
     }    
@@ -230,7 +235,7 @@ public class MapGameController implements Initializable {
     @FXML
     public void func2ButtonAction(ActionEvent event) {
         mapData = new MapData(21, 15,3,3);
-        chara = new MoveChara(1, 1, mapData);
+        chara = new MoveChara(1, 1, mapData,this);
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
         for (int y = 0; y < mapData.getHeight(); y ++) {
             for (int x = 0; x < mapData.getWidth(); x ++) {
@@ -263,5 +268,6 @@ public class MapGameController implements Initializable {
     public void printAction(String actionString) {
         System.out.println("Action: " + actionString);
     }
+    
 
 }

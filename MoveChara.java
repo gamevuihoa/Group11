@@ -29,9 +29,11 @@ public class MoveChara {
 
     private int charaDirection;
     private int score;	
+    private MapGameController gameController;
 
-    MoveChara(int startX, int startY, MapData mapData) {
+    MoveChara(int startX, int startY, MapData mapData, MapGameController gameController) {
         this.mapData = mapData;
+        this.gameController = gameController;
 
         charaImages = new Image[4][3];
         charaImageViews = new ImageView[4];
@@ -86,6 +88,7 @@ public class MoveChara {
             int itemType = mapData.getMap(posX,posY);
                 if(itemType == MapData.TYPE_TIME){
                     //表示されている時間を増やすプログラムをここに書く
+                    gameController.increaseTimeSeconds(10);
 		    score += 100;
                     mapData.setMap(posX, posY, MapData.TYPE_SPACE);
                     mapData.updateImageView(posX, posY);
@@ -103,6 +106,9 @@ public class MoveChara {
             return false;
         }
     }
+
+        
+
 
     public int[] getSelectedNumbers() {
         return selectedNumbers;
