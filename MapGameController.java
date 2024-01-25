@@ -214,7 +214,7 @@ public class MapGameController implements Initializable {
                 timeline.stop();
                 mapData.setMap(chara.getPosX(),chara.getPosY(),MapData.TYPE_OTHER_FLAG);
                 drawMap(chara, mapData);
-                if (GoalWindow.onOpen(chara.getScore())) { 
+                if (GoalWindow.onOpen(chara.getScore(),timeSeconds)) { 
                     newgame();
                 }
     }
