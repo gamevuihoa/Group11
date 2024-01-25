@@ -98,6 +98,7 @@ public class MoveChara {
                     shuffleArray(numbers);
                     selectedNumbers = Arrays.copyOfRange(numbers, 0, 4);
                 } else if(mapData.getMap(posX, posY) == MapData.TYPE_OTHER_FLAG){
+                    gameController.openGoalAction();
                 System.out.println("Game Clear!");
                 }
         }
