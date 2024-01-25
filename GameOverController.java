@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 
 public class GameOverController {
 
+/*	
 	@FXML
 	void onGameOverAction(ActionEvent event) {
 		try {
@@ -18,7 +19,7 @@ public class GameOverController {
 			System.out.println(ex.getMessage());
 		}
 	}
-
+*/
 	@FXML
 	void exit(ActionEvent event) {
 		try {

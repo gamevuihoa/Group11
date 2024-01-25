@@ -4,11 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="GameOverController">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameOverController">
   <children>
     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" text="Game Over..." textAlignment="CENTER" />
-    <Button onAction="#onGameOverAction" text="Back to the maze">
-    </Button>
     <Button onAction="#exit" prefHeight="25.0" prefWidth="107.0" text="Exit the game" textAlignment="CENTER" />
   </children>
 </VBox>

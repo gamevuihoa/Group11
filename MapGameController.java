@@ -78,6 +78,7 @@ public class MapGameController implements Initializable {
         }
         timeSeconds = 60; 
         timeline.playFromStart(); 
+        StageDB.getGameClearSound().stop();
         StageDB.getMainSound().stop();
         StageDB.getMainSound().play();
         updateTimeleftLabel();
@@ -211,6 +212,7 @@ public class MapGameController implements Initializable {
     public void openGoalAction () {
                 printAction("OPEN");
                 StageDB.getMainSound().stop();
+                StageDB.getGameClearSound().play();
                 timeline.stop();
                 mapData.setMap(chara.getPosX(),chara.getPosY(),MapData.TYPE_OTHER_FLAG);
                 drawMap(chara, mapData);

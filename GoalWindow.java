@@ -14,7 +14,11 @@ public class GoalWindow {
         alrt.setHeaderText("Game Clear!");
         alrt.setContentText("Score: " + score + "\n");
         alrt.setContentText("Clear Time: " + goalSecond + "\n");
-        alrt.setContentText("Score: " + (score + 100) + "\n" + "Clear Time: " + goalSecond + "\n" + "Total Score: " + (score + 100) * goalSecond + "\n" + "Start new game?");
+        if(score == 0){
+            alrt.setContentText("Score: " + (score) + "\n" + "Clear Time: " + goalSecond + "\n" + "Total Score: " + (goalSecond*50) + "\n" + "Start new game?"); 
+        }else if(score>0){
+        alrt.setContentText("Score: " + (score) + "\n" + "Clear Time: " + goalSecond + "\n" + "Total Score: " + (score * goalSecond) + "\n" + "Start new game?");
+        }
         Optional<ButtonType> result = alrt.showAndWait();
         if (result.get() == ButtonType.OK) {
             return true;
