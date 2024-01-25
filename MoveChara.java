@@ -93,13 +93,13 @@ public class MoveChara {
                     mapData.setMap(posX, posY, MapData.TYPE_SPACE);
                     mapData.updateImageView(posX, posY);
                 }else if(itemType == MapData.TYPE_FLOOR){
-                    	//方向キーを変えるために配列の要素をシャッフルする
-                    	int[] numbers = {1, 2, 3, 4};
-                    	shuffleArray(numbers);
-                    	selectedNumbers = Arrays.copyOfRange(numbers, 0, 4);
+                    //方向キーを変えるために配列の要素をシャッフルする
+                    int[] numbers = {1, 2, 3, 4};
+                    shuffleArray(numbers);
+                    selectedNumbers = Arrays.copyOfRange(numbers, 0, 4);
                 } else if(itemType == MapData.TYPE_OTHER_FLAG){
-			System.out.println("Game Clear!");
-                    	gameController.openGoalAction();
+                    gameController.openGoalAction();
+                System.out.println("Game Clear!");
                 }
         }
             return true;

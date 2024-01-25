@@ -8,11 +8,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 
 public class GoalWindow {
-    protected static boolean onOpen() {
+    protected static boolean onOpen(int score) {
         Alert alrt = new Alert(AlertType.CONFIRMATION);
         alrt.setTitle(null);
         alrt.setHeaderText("Game Clear!");
-        alrt.setContentText(/*"Score: " + MapGameController.chara.getScore + "\n" + */"Start new game?");
+        alrt.setContentText("Score: " + score + "\n" + "Start new game?");
         Optional<ButtonType> result = alrt.showAndWait();
         if (result.get() == ButtonType.OK) {
             return true;
