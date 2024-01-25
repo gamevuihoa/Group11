@@ -12,7 +12,7 @@ public class GoalWindow {
         Alert alrt = new Alert(AlertType.CONFIRMATION);
         alrt.setTitle(null);
         alrt.setHeaderText("Game Clear!");
-        alrt.setContentText("Score: " + score + "\n" + "Start new game?");
+        alrt.setContentText("Total Score: " + score + "\n" + "Start new game?");
         Optional<ButtonType> result = alrt.showAndWait();
         if (result.get() == ButtonType.OK) {
             return true;
