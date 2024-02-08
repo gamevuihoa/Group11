@@ -170,9 +170,7 @@ public class MapGameController implements Initializable {
             } else if (D == 4) {
                 rightButtonAction();
             }
-        } else if (key == KeyCode.O) {
-            openGoalAction();
-        }    
+        }   
     }
 
 
